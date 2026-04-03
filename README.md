@@ -36,7 +36,7 @@ app = tornado.web.Application(
 Create a base handler:
 ```python
 import tornado
-from tornado_redis_sessions import TornadoSessionsMixin
+from tornado_auth_sessions import TornadoSessionsMixin
 
 
 class BaseHandler(
