@@ -1,4 +1,4 @@
-from app.middleware.client import RedisClient
+from tornado_auth_sessions.client import RedisClient
 
 
 class TornadoAuthSessionMixin:

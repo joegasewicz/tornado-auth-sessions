@@ -1,11 +1,7 @@
 import logging
 import sys
 
-from config import config
-
 log_level = logging.DEBUG
-if not config.DEBUG:
-    log_level = logging.INFO
 
 log = logging.getLogger("app")
 log.setLevel(log_level)

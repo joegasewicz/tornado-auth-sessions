@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 import redis
 
-from app.middleware.log import log
+from tornado_auth_sessions.log import log
 
 
 class Client(ABC):
