@@ -1,6 +1,6 @@
 [project]
 name = "tornado-auth-sessions"
-version = "0.1.0"
+version = "0.0.1"
 description = ""
 authors = [
     {name = "joegasewicz",email = "joegasewicz@gmail.com"}
@@ -8,11 +8,17 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "tornado>=6.0",
+    "redis>=5.0",
 ]
 
 [tool.poetry]
-packages = [{include = "tornado_auth_sessions", from = "src"}]
+packages = [{include = "tornado_auth_sessions"}]
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+pylint = "^4.0.5"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
