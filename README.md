@@ -5,7 +5,7 @@ Simple, secure Redis-backed session mixin for Tornado.
 ## Installation
 
 ```bash
-pip install tornado-redis-sessions
+pip install tornado-auth-sessions
 ```
 ---
 
