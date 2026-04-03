@@ -108,11 +108,6 @@ class DashboardHandler(BaseHandler):
         self.write(f"User: {user_id}")
 ```
 
-```python
-def get_current_user(self):
-    return self.get_session()
-```
-
 ---
 
 ## Security notes
