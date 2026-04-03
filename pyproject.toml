@@ -1,6 +1,6 @@
 [project]
 name = "tornado-auth-sessions"
-version = "0.0.2"
+version = "0.0.3"
 description = ""
 authors = [
     {name = "joegasewicz",email = "joegasewicz@gmail.com"}
