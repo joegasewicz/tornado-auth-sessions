@@ -2,8 +2,6 @@
 
 Simple, secure Redis-backed session mixin for Tornado.
 
----
-
 ## Installation
 
 ```bash
