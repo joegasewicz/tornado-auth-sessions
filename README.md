@@ -1,0 +1,108 @@
+# Tornado Auth Sessions
+
+Simple, secure Redis-backed session mixin for Tornado.
+
+No magic. No heavy abstractions. Just:
+- secure cookies
+- Redis session storage
+- clean mixin integration
+
+---
+
+## Features
+
+- Server-side sessions (Redis)
+- Signed Tornado secure cookies
+- Lazy client initialization
+- Minimal setup
+- No external session libraries
+
+---
+
+## Installation
+
+```bash
+pip install tornado-redis-sessions
+```
+---
+
+## Setup
+
+Configure Redis via Tornado application settings:
+
+```python
+import tornado.web
+
+app = tornado.web.Application(
+    handlers,
+    redis_host={
+        "host": "localhost",
+        "port": 6379,
+        "db": 0,
+        "password": None,
+        "decode_responses": True,
+    },
+    cookie_secret="YOUR_SECRET_KEY",
+)
+```
+
+---
+
+## Usage
+
+Create a base handler:
+```python
+import tornado
+from tornado_redis_sessions import TornadoSessionsMixin
+
+
+class BaseHandler(
+    TornadoSessionsMixin,
+    tornado.web.RequestHandler,
+):
+    pass 
+```
+
+---
+
+## Example
+### Login
+
+```python
+class LoginHandler(BaseHandler):
+    def post(self):
+        # authenticate user...
+        self.set_session(user.id)
+        self.redirect("/dashboard")
+```
+
+### Protected route
+
+```python
+class DashboardHandler(BaseHandler):
+    def get(self):
+        user_id = self.get_session()
+        if not user_id:
+            self.redirect("/login")
+            return
+
+        self.write(f"Welcome user {user_id}") 
+```
+
+### Logout
+
+```python
+class LogoutHandler(BaseHandler):
+    def post(self):
+        self.remove_session(user.id)
+        self.redirect("/")
+```
+
+---
+
+## Security notes
+- Uses Tornado set_secure_cookie (signed, tamper-proof)
+- Always use HTTPS in production
+- Set secure=True for cookies
+- Use strong cookie_secret
+- Pair with CSRF protection for forms
