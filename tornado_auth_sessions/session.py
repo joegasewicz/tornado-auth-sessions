@@ -113,3 +113,33 @@ class TornadoAuthSessionMixin:
             return None
         self.client.remove_session_id(session_id)
         return None
+
+    def get_current_user(self):
+        """
+        Tornado authentication hook used to resolve the current user.
+
+        This method integrates with Tornado's built-in authentication system.
+        When using ``@tornado.web.authenticated``, Tornado will call this method
+        automatically and assign the result to ``self.current_user``.
+
+        Internally this simply delegates to ``get_session()``, which:
+            - reads the signed ``session_id`` cookie
+            - looks up the session in Redis
+            - returns the associated ``user_id``
+
+        :return: user_id if authenticated, else None
+
+        Example::
+
+            class DashboardHandler(BaseHandler):
+
+                @tornado.web.authenticated
+                def get(self):
+                    user_id = self.current_user
+                    self.write(f"User: {user_id}")
+
+        Notes:
+            - Requires ``login_url`` to be set in Tornado application settings
+            - If ``None`` is returned, Tornado will redirect to ``login_url``
+        """
+        return self.get_session()
