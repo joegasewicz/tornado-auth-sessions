@@ -2,21 +2,6 @@
 
 Simple, secure Redis-backed session mixin for Tornado.
 
-No magic. No heavy abstractions. Just:
-- secure cookies
-- Redis session storage
-- clean mixin integration
-
----
-
-## Features
-
-- Server-side sessions (Redis)
-- Signed Tornado secure cookies
-- Lazy client initialization
-- Minimal setup
-- No external session libraries
-
 ---
 
 ## Installation
