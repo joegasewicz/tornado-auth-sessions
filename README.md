@@ -85,10 +85,6 @@ class LogoutHandler(BaseHandler):
 
 This library integrates seamlessly with Tornado’s built-in authentication system via `get_current_user`.
 
-## Authentication (Tornado Native)
-
-This library integrates seamlessly with Tornado’s built-in authentication system via `get_current_user`.
-
 Add this to your base handler:
 
 ```python
